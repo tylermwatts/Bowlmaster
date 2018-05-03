@@ -19,7 +19,7 @@ public class DragLaunch : MonoBehaviour {
 		startTime = Time.time;	
 	}
 
-	public void DragEnd(float time, Vector3 position){
+	public void DragEnd(){
 		dragEnd = Input.mousePosition;
 		endTime = Time.time;
 
