@@ -7,7 +7,7 @@ public class PinSetter : MonoBehaviour {
 
 	public int lastStandingCount = -1;
 	public Text standingDisplay;
-	public float distanceToRaise = 40f;
+	public GameObject pinSet;
 	
 	private float lastChangeTime;
 	private bool ballEnteredBox;
@@ -22,27 +22,11 @@ public class PinSetter : MonoBehaviour {
 	void Update () {
 		standingDisplay.text = CountStanding().ToString();
 		if(ballEnteredBox){
-			CheckStanding();
+			UpdateStandingCountAndSettle();
 		}
 	}
 
-	public void RaisePins(){
-		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()){
-			if (pin.IsStanding()){
-				pin.transform.Translate (new Vector3 (0, distanceToRaise, 0), Space.World);
-			}
-		}
-	}
-
-	public void LowerPins(){
-
-	}
-
-	public void RenewPins(){
-
-	}
-
-	void CheckStanding(){
+	void UpdateStandingCountAndSettle(){
 		int currentStanding = CountStanding(); 
 		if (currentStanding != lastStandingCount){
 			lastChangeTime = Time.time;
@@ -62,7 +46,24 @@ public class PinSetter : MonoBehaviour {
 		standingDisplay.color = Color.green;
 	}
 
+	public void RaisePins(){
+		foreach(Pin pin in GameObject.FindObjectsOfType<Pin>()){
+			pin.Raise();
+		}
+	}
 
+	public void LowerPins(){
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()){
+			pin.Lower();
+		}
+	}
+
+	public void RenewPins(){
+		Instantiate (pinSet, new Vector3 (0, 41, 1829), Quaternion.identity);
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()){
+			pin.Renew();
+		}
+	}
 
 	int CountStanding(){
 		int standingPinCount = 0;
@@ -79,13 +80,6 @@ public class PinSetter : MonoBehaviour {
 		if (thingHit.GetComponent<Ball>()){
 			ballEnteredBox = true;
 			standingDisplay.color = Color.red;
-		}
-	}
-
-	void OnTriggerExit (Collider collider){
-		GameObject thingLeft = collider.gameObject;
-		if (thingLeft.GetComponent<Pin>()){
-			Destroy(thingLeft);
 		}
 	}
 }
