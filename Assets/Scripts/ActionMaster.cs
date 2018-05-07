@@ -9,7 +9,17 @@ public class ActionMaster {
 	private int[] bowls = new int[21];
 	private int bowl = 1;
 
-	public Action Bowl(int pins){
+	public static Action NextAction (List<int> pinFalls){
+		ActionMaster am = new ActionMaster();
+		Action currentAction = new Action();
+
+		foreach (int pinFall in pinFalls){
+			currentAction = am.Bowl(pinFall);
+		}
+		return currentAction;
+	}
+
+	public Action Bowl(int pins){ // TODO make private
 		if (pins < 0 || pins > 10){throw new UnityException("Invalid number of pins");}
 
 		bowls [bowl - 1] = pins;
@@ -49,7 +59,7 @@ public class ActionMaster {
 
 		throw new UnityException ("Not sure what action to return");
 	}
-
+	
 	private bool Bowl21Awarded(){
 		return (bowls [19-1] + bowls [20-1] >= 10);
 	}

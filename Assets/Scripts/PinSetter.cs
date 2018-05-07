@@ -5,24 +5,32 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
-	public int lastStandingCount = -1;
+	
 	public Text standingDisplay;
 	public GameObject pinSet;
-	
+	public bool ballOutOfPlay = false;
+
+	private int lastStandingCount = -1;
 	private float lastChangeTime;
-	private bool ballEnteredBox;
+	private int lastSettledCount = 10;
+	
+	private Animator animator;
 	private Ball ball;
+	// need ActionMaster here so that only one instance is created
+	private ActionMaster actionMaster = new ActionMaster();
 
 	// Use this for initialization
 	void Start () {
 		ball = GameObject.FindObjectOfType<Ball>();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		standingDisplay.text = CountStanding().ToString();
-		if(ballEnteredBox){
+		if(ballOutOfPlay){
 			UpdateStandingCountAndSettle();
+			standingDisplay.color = Color.red;
 		}
 	}
 
@@ -40,15 +48,31 @@ public class PinSetter : MonoBehaviour {
 	}
 
 	void PinsHaveSettled(){
+		int standing = CountStanding();
+		int pinFall = lastSettledCount - standing;
+		lastSettledCount = standing;
+		ActionMaster.Action action = actionMaster.Bowl(pinFall);
+		if (action == ActionMaster.Action.Tidy){
+			animator.SetTrigger("tidyTrigger");
+		} else if (action == ActionMaster.Action.EndTurn){
+			animator.SetTrigger("resetTrigger");
+			lastSettledCount = 10;
+		} else if (action == ActionMaster.Action.Reset){
+			animator.SetTrigger("resetTrigger");
+			lastSettledCount = 10;
+		} else if (action == ActionMaster.Action.EndGame){
+			throw new UnityException("Don't know how to end game for now");
+		}
 		ball.Reset();
 		lastStandingCount  = -1;
-		ballEnteredBox = false;
+		ballOutOfPlay = false;
 		standingDisplay.color = Color.green;
 	}
 
 	public void RaisePins(){
 		foreach(Pin pin in GameObject.FindObjectsOfType<Pin>()){
 			pin.Raise();
+			pin.transform.rotation = Quaternion.Euler(270f, 0, 0);
 		}
 	}
 
@@ -73,13 +97,5 @@ public class PinSetter : MonoBehaviour {
 			}
 		}
 		return standingPinCount;
-	}
-
-	void OnTriggerEnter(Collider collider){
-		GameObject thingHit = collider.gameObject;
-		if (thingHit.GetComponent<Ball>()){
-			ballEnteredBox = true;
-			standingDisplay.color = Color.red;
-		}
 	}
 }
