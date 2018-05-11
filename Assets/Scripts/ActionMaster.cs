@@ -19,14 +19,14 @@ public static class ActionMaster {
 					nextAction = Action.Tidy;
 				} else if (rolls[18] + rolls[19] == 10) {
 					nextAction = Action.Reset;
-				} else if (rolls [18] + rolls[19] >= 10) {  // Roll 21 awarded
+				} else if (rolls [18] + rolls[19] > 10) {  // Roll 21 awarded
 					nextAction = Action.Tidy;
 				} else {
 					nextAction = Action.EndGame;
 				}
 			} else if (i % 2 == 0) { // First bowl of frame
 				if (rolls[i] == 10) {
-					rolls.Insert (i, 0); // Insert virtual 0 after strike
+					rolls.Insert(i, 0);
 					nextAction = Action.EndTurn;
 				} else {
 					nextAction = Action.Tidy;

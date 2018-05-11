@@ -25,22 +25,21 @@ public class ScoreDisplay : MonoBehaviour {
 	public static string FormatRolls(List<int> rolls){
 		// make a string of 21 rolls to fill each roll score
 		string output = "";
-		int strikes = 0;
-		List<string> outputString = new List<string>();
 		for (int i = 0; i < rolls.Count; i++){
-			if (rolls[i] == 10){										// increment number of strikes to keep track of frames
-				strikes++;
-			}
-			if (strikes <= 9 && rolls[i] == 10){						// Adds "X" plus a space for frames 1 - 9 for STRIKES
-				outputString.Add("X");
-				outputString.Add(" ");
-			} else if (strikes >= 10 && rolls[i] == 10){				// Adds "X" without a space for frame 10 if 3 STRIKES
-				outputString.Add("X");
-			} else {													// Adds the rolls together for OPEN frames
-				outputString.Add(rolls[i].ToString());
+			int roll = output.Length + 1;
+
+			if (rolls[i] == 0){																// Always enter 0 as -
+				output += "-";
+			} else if ((roll % 2 == 0  || roll == 21) && (rolls[i - 1] + rolls[i]) == 10){	// SPARES
+				output += "/";
+			} else if (roll >= 19 && rolls[i] == 10){										// STRIKE in last frame
+				output += "X";
+			} else if (rolls[i] == 10){														// Counts # of STRIKES for frames 1 - 9
+				output += "X ";
+			} else {																		// Adds the rolls together for OPEN frames
+				output += rolls[i].ToString();
 			}
 		}
-		output = string.Join("", outputString.ToArray());
 		return output;
 	}
 

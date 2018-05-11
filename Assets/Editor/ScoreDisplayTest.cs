@@ -63,7 +63,7 @@ public class ScoreDisplayTest {
 
 	[Test]
 	public void T08_TwentyRollsNoStrikes(){
-		int[] rolls = {1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,};
+		int[] rolls = {1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5};
 		string rollsString = "15151515151515151515";
 		Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
 	}
@@ -72,6 +72,27 @@ public class ScoreDisplayTest {
 	public void T09_HandlesSpares(){
 		int[] rolls = {3,7};
 		string rollsString = "3/";
+		Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+	}
+
+	[Test]
+	public void T10_HandleGutterballSpare(){
+		int[] rolls = {0,10};
+		string rollsString = "-/";
+		Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+	}
+
+	[Test]
+	public void T11_HandleAllSparesPlusFinalStrike(){
+		int[] rolls = {0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,10};
+		string rollsString = "-/-/-/-/-/-/-/-/-/-/X";
+		Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+	}
+
+	[Test]
+	public void T12_StrikeCallsXNotDash(){
+		int[] rolls = {10};
+		string rollsString = "X ";
 		Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
 	}
 }

@@ -6,6 +6,7 @@ using System.Linq;
 public class GameManager : MonoBehaviour {
 
 	private List<int> rolls = new List<int>();
+	private List<int> boxes = new List<int>();
 	private PinSetter pinSetter;
 	private Ball ball;
 	private ScoreDisplay scoreDisplay;
@@ -19,8 +20,9 @@ public class GameManager : MonoBehaviour {
 	public void Bowl (int pinFall){
 		try{
 			rolls.Add(pinFall);
+			boxes.Add(pinFall);
 			ball.Reset();
-			pinSetter.PerformAction(ActionMaster.NextAction(rolls));
+			pinSetter.PerformAction(ActionMaster.NextAction(boxes));
 		} catch {
 			Debug.LogWarning ("Something went wrong in Bowl()");
 		}

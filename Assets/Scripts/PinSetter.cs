@@ -31,7 +31,7 @@ public class PinSetter : MonoBehaviour {
 			animator.SetTrigger("resetTrigger");
 			pinCounter.Reset();
 		} else if (action == ActionMaster.Action.EndGame){
-			throw new UnityException("Don't know how to end game for now");
+			print ("Game Over");
 		}
 	}	
 

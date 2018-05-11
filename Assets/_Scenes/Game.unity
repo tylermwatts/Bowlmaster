@@ -4308,6 +4308,106 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114047528708531682, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245153029769630, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114182992300759464, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321124026368444, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860825854372708, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660433359948488, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114669178143983396, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114619867083898402, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361425037115810, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504333910140192, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: pinCOM.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54401062890577970, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54450112138236492, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54829875110437264, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54102414221432230, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54270159233271748, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54810086016220688, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54150402579805604, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54788766542244028, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54367195334310932, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54327413140199008, guid: 0db34fcb110f14041af2d38512062fb4,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0db34fcb110f14041af2d38512062fb4, type: 2}
   m_IsPrefabParent: 0

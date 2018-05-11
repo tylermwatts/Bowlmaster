@@ -87,4 +87,10 @@ public class ActionMasterTest {
 		int[] rolls = {1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10,10, 10};
 		Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
 	}
+
+	[Test]
+	public void T12_StrikeOnFirstFrameNextFrameTidy(){
+		int[] rolls = {10, 3};
+		Assert.AreEqual(tidy, ActionMaster.NextAction(rolls.ToList()));
+	}
 }
